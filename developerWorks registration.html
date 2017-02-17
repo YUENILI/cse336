@@ -16,7 +16,13 @@
     <script type="text/javascript">
         function countInput(){
             var inputs = document.getElementsByTagName('input');
-            alert("number of input of input tags is "+inputs.length);
+			var password = 0;
+			for (var input=0;input<inputs.length;input++){
+				if(inputs[input].type=="password") password++;
+			}
+			document.getElementById('number4input').innerHTML=inputs.length+document.getElementsByTagName('select').length;
+			document.getElementById('number4password').innerHTML=password;
+            //alert("number of input of input tags is "+inputs.length);
         }
     </script>
 </head>
@@ -177,6 +183,8 @@ question:<span class="ibm-required">*</span></label>
 </form>
         <button onclick="countInput()">Count Fields</button>
     <button>Submit</button><button>Cancel</button>
+	<p>The number of input elements is <span id="number4input"></p>
+	<p>The number of input elements of type password is <span id="number4password"></span></p>
 </div>
 </div>
 </div>
