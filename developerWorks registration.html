@@ -20,10 +20,51 @@
 /*]]>*/
 </style>
     <script type="text/javascript">
-        $(document).ready(function() {first_name_checker();});
-        function first_name_checker(){
-            $("#fname").focus(function(){
-            this.tooltip();
+        $(document).ready(function() {required_checker();});
+        function required_checker(){
+            $("#FName").focus(function(){
+			fname = $("#FName");
+			if (!fname.val().match(/^[a-zA-Z]+$/)){
+			fname.attr('data-original-title',"Please do not enter space, numbers or punctuation in your name");
+			}else if(){
+			
+			}else{
+			fname.title="pass"
+			}
+            fname.tooltip();
+            });
+			$("#LName").focus(function(){
+            fname = $("#LName");
+			if (!fname.val().match(/^[a-zA-Z]{0,20}$/)){
+			fname.title="Please do not enter space, numbers or punctuation in your name";
+			}else{
+			fname.title="pass"
+			}
+            fname.tooltip();
+            });
+			$("#emailAddress").focus(function(){
+            $("#emailAddress").tooltip();
+            });
+			$("#Password").focus(function(){
+            $("#Password").tooltip();
+            });
+			$("#RePassword").focus(function(){
+            $("#RePassword").tooltip();
+            });
+			$("#alias").focus(function(){
+            $("#alias").tooltip();
+            });
+			$("#countryResidence").focus(function(){
+            $("#countryResidence").tooltip();
+            });
+			$("#Language").focus(function(){
+            $("#Language").tooltip();
+            });
+			$("#SecurityQues").focus(function(){
+            $("#SecurityQues").tooltip();
+            });
+			$("#SecurityAns").focus(function(){
+            $("#SecurityAns").tooltip();
             });
         }
         function countInput(){
