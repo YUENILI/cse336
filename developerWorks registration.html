@@ -2,6 +2,12 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <meta http-equiv="content-type" content=
 "text/html; charset=UTF-8" />
 <!-- SITE MON : START (DO NOT DELETE) -->
@@ -14,6 +20,12 @@
 /*]]>*/
 </style>
     <script type="text/javascript">
+        $(document).ready(function() {first_name_checker();});
+        function first_name_checker(){
+            $("#fname").focus(function(){
+            this.tooltip();
+            });
+        }
         function countInput(){
             var inputs = document.getElementsByTagName('input');
 			var password = 0;
@@ -65,12 +77,12 @@ required to complete this transaction.</p>
 <div class="ibm-col-2-1">
 <p><label for="FName">First name:<span class=
 "ibm-required">*</span></label> <span><input name="FName" id=
-"FName" size="36" type="text" value="" /></span></p>
+"FName" size="36" type="text" value="" data-toggle="tooltip" title="Pass"/></span></p>
 </div>
 <div class="ibm-col-2-1">
 <p><label for="LName">Last name:<span class=
 "ibm-required">*</span></label> <span><input name="LName" id=
-"LName" size="36" type="text" value="" /></span></p>
+"LName" size="36" type="text" value="" data-toggle="tooltip" title="Pass"/></span></p>
 </div>
 </div>
 <p><label for="emailAddress">Email address:<span class=
@@ -79,8 +91,7 @@ required to complete this transaction.</p>
 "ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">
 (This will also be your IBM ID for signing in)</span></label>
 <span><input name="UserID" id="emailAddress" size="42" type="text"
-value="" onkeyup="validateUserID();" onblur=
-"checkEmail('emailAddress');" /></span> <span class=
+value="" data-toggle="tooltip" title="Pass" /></span> <span class=
 "dw-lc-formerror" id="userid_invalid" style="display:none;">This is
 not a valid email address.</span> <span class="dw-lc-formconfirm"
 id="userid_valid" style="display:none;">&Acirc;&nbsp;</span></p>
@@ -90,15 +101,14 @@ id="userid_valid" style="display:none;">&Acirc;&nbsp;</span></p>
 "ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">
 (Must be at least 8 characters)</span></label> <span><input name=
 "Password" id="Password" size="42" type="password" value=""
-onkeyup="validatePassword();" /></span> <span class=
+data-toggle="tooltip" title="Pass"/></span> <span class=
 "dw-lc-formerror" id="password_invalid" style="display:none;">The
 password you entered is not valid.</span> <span class=
 "dw-lc-formconfirm" id="password_valid" style=
 "display:none;">&Acirc;&nbsp;</span></p>
 <p><label for="RePassword">Verify password:<span class=
 "ibm-required">*</span></label> <span><input name="RePassword" id=
-"RePassword" size="42" type="password" value="" onkeyup=
-"validateRePassword();" /></span> <span class="dw-lc-formerror" id=
+"RePassword" size="42" type="password" value="" data-toggle="tooltip" title="Pass" /></span> <span class="dw-lc-formerror" id=
 "repassword_mismatch" style="display:none;">The passwords did not
 match.</span> <span class="dw-lc-formerror" id="repassword_invalid"
 style="display:none;">The password you entered is not valid.</span>
@@ -109,9 +119,7 @@ style="display:none;">The password you entered is not valid.</span>
 <span class=
 "ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">
 (Must be between 3 - 31 characters. )</span></label>
-<span><input name="alias" id="alias" size="42" type="text" value=""
-onkeyup="validateDisplayName();" onblur=
-"checkDisplayname('alias');" /></span> <span class=
+<span><input name="alias" id="alias" size="42" type="text" value="" data-toggle="tooltip" title="Pass" /></span> <span class=
 "dw-lc-formerror" id="alias_invalid" style="display:none;">This
 display name is not valid. Please choose another.</span>
 <span class="dw-lc-formconfirm" id="alias_valid" style=
@@ -138,7 +146,7 @@ residence:<span class="ibm-required">*</span><br />
 <div class="ibm-col-2-1">
 <p><label for="Language">Language:<span class=
 "ibm-required">*</span></label> <span><select name="Language" id=
-"Language">
+"Language" data-toggle="tooltip" title="Pass">
 <option value="" selected="selected">Select one</option>
 <option value="ab-GE">Abkhazian</option>
 <option value="aa-ET">Afar</option>
@@ -157,7 +165,7 @@ your identity.</p>
 <div class="ibm-col-2-1">
 <p><label for="SecurityQues">Security question:<span class=
 "ibm-required">*</span></label> <span><select name="SecurityQues"
-id="SecurityQues" onchange="removetempfunction()">
+id="SecurityQues" data-toggle="tooltip" title="Pass">
 <option selected="selected" value="">Select one</option>
 <option value="name">What is your mother's maiden name?</option>
 <option value="pet">What is the name of your first pet?</option>
@@ -178,7 +186,7 @@ type="text" value="" /></span></p>
 <p><label for="SecurityAns">Answer to security
 question:<span class="ibm-required">*</span></label>
 <span><input name="SecurityAns" id="SecurityAns" size="42" type=
-"text" value="" /></span></p>
+"text" value="" data-toggle="tooltip" title="Pass"/></span></p>
 
 </form>
         <button onclick="countInput()">Count Fields</button>
