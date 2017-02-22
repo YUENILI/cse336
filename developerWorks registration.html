@@ -22,28 +22,41 @@
     <script type="text/javascript">
         $(document).ready(function() {required_checker();});
         function required_checker(){
-            $("#FName").focus(function(){
+            $("#FName").focusout(function(){
 			fname = $("#FName");
-			if (!fname.val().match(/^[a-zA-Z]+$/)){
-			fname.attr('data-original-title',"Please do not enter space, numbers or punctuation in your name");
-			}else if(){
-			
-			}else{
-			fname.title="pass"
+              if(fname.val()==""){
+                  $("#feedback_fname").html("please input your first name");
 			}
-            fname.tooltip();
-            });
-			$("#LName").focus(function(){
-            fname = $("#LName");
-			if (!fname.val().match(/^[a-zA-Z]{0,20}$/)){
-			fname.title="Please do not enter space, numbers or punctuation in your name";
-			}else{
-			fname.title="pass"
+               else if (fname.val().match(/^[a-zA-Z]{0,20}$/)==null){
+                   $("#feedback_fname").html( "Please do not enter space, numbers or punctuation in your name within 20 characters");
+			} else{
+                $("#feedback_fname").html( "validated");
 			}
-            fname.tooltip();
             });
-			$("#emailAddress").focus(function(){
-            $("#emailAddress").tooltip();
+			$("#LName").focusout(function(){
+            lname = $("#LName");
+                fb_lname = $("#feedback_lname");
+                if (lname.val()==""){
+fb_lname.html("please input your last name");
+            }
+			else if (!lname.val().match(/^[a-zA-Z]{0,20}$/)){
+			fb_lname.html("Please do not enter space, numbers or punctuation in your name within 20 characters");
+			} else{
+			fb_lname.html( "validated");
+			}
+            
+            });
+			$("#emailAddress").focusout(function(){
+            email=$("#emailAddress");
+                fb_email = $("#feedback_email");
+                if (email.val()==""){
+fb_email.html("please input your email");
+            }
+                else if (!email.val().match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+(.edu|.com|.net)$/)){
+			fb_email.html("Please do not enter space, numbers or punctuation in your name within 20 characters");
+			} else{
+			fb_email.html( "validated");
+			}
             });
 			$("#Password").focus(function(){
             $("#Password").tooltip();
@@ -118,12 +131,14 @@ required to complete this transaction.</p>
 <div class="ibm-col-2-1">
 <p><label for="FName">First name:<span class=
 "ibm-required">*</span></label> <span><input name="FName" id=
-"FName" size="36" type="text" value="" data-toggle="tooltip" title="Pass"/></span></p>
+"FName" size="36" type="text" value="" data-toggle="tooltip" title="please fill in your first name"/></span></p>
+    <span id="feedback_fname"></span>
 </div>
 <div class="ibm-col-2-1">
 <p><label for="LName">Last name:<span class=
 "ibm-required">*</span></label> <span><input name="LName" id=
-"LName" size="36" type="text" value="" data-toggle="tooltip" title="Pass"/></span></p>
+"LName" size="36" type="text" value="" data-toggle="tooltip" title="please fill in your first name"/></span></p>
+    <span id="feedback_lname"></span>
 </div>
 </div>
 <p><label for="emailAddress">Email address:<span class=
@@ -132,9 +147,9 @@ required to complete this transaction.</p>
 "ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">
 (This will also be your IBM ID for signing in)</span></label>
 <span><input name="UserID" id="emailAddress" size="42" type="text"
-value="" data-toggle="tooltip" title="Pass" /></span> <span class=
-"dw-lc-formerror" id="userid_invalid" style="display:none;">This is
-not a valid email address.</span> <span class="dw-lc-formconfirm"
+value="" data-toggle="tooltip" title="please fill in your email address" /></span> 
+    <span id="feedback_email"></span>
+    <span class="dw-lc-formconfirm"
 id="userid_valid" style="display:none;">&Acirc;&nbsp;</span></p>
 <p><label for="Password">Password:<span class=
 "ibm-required">*</span><br />
@@ -142,29 +157,22 @@ id="userid_valid" style="display:none;">&Acirc;&nbsp;</span></p>
 "ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">
 (Must be at least 8 characters)</span></label> <span><input name=
 "Password" id="Password" size="42" type="password" value=""
-data-toggle="tooltip" title="Pass"/></span> <span class=
-"dw-lc-formerror" id="password_invalid" style="display:none;">The
-password you entered is not valid.</span> <span class=
-"dw-lc-formconfirm" id="password_valid" style=
-"display:none;">&Acirc;&nbsp;</span></p>
+data-toggle="tooltip" title="password"/></span>
+    <span id="feedback_password"></span>
+    </p>
 <p><label for="RePassword">Verify password:<span class=
 "ibm-required">*</span></label> <span><input name="RePassword" id=
-"RePassword" size="42" type="password" value="" data-toggle="tooltip" title="Pass" /></span> <span class="dw-lc-formerror" id=
-"repassword_mismatch" style="display:none;">The passwords did not
-match.</span> <span class="dw-lc-formerror" id="repassword_invalid"
-style="display:none;">The password you entered is not valid.</span>
-<span class="dw-lc-formconfirm" id="repassword_valid" style=
-"display:none;">&Acirc;&nbsp;</span></p>
+"RePassword" size="42" type="password" value="" data-toggle="tooltip" title="fill your password again" /></span> 
+    <span id="feedback_repassword"></span>
+</p>
 <p><label for="alias">Display name:<span class=
 "ibm-required">*</span><br />
 <span class=
 "ibm-additional-info dw-lc-labeloverride dw-lc-important-adjust ibm-item-note">
 (Must be between 3 - 31 characters. )</span></label>
-<span><input name="alias" id="alias" size="42" type="text" value="" data-toggle="tooltip" title="Pass" /></span> <span class=
-"dw-lc-formerror" id="alias_invalid" style="display:none;">This
-display name is not valid. Please choose another.</span>
-<span class="dw-lc-formconfirm" id="alias_valid" style=
-"display:none;">&Acirc;&nbsp;</span></p>
+<span><input name="alias" id="alias" size="42" type="text" value="" data-toggle="tooltip" title="fill in your display name" /></span> 
+    <span id="feedback_alias"></span>
+    </p>
 <p><label for="countryResidence">Country/region of
 residence:<span class="ibm-required">*</span><br />
 <span class=
@@ -178,16 +186,19 @@ residence:<span class="ibm-required">*</span><br />
 <option value="AS">American Samoa</option>
 <option value="AD">Andorra</option>
 <option value="AO">Angola</option>
-</select></span></p>
+</select></span>
+    <span id="feedback_country"></span>
+    </p>
 <div class="ibm-columns">
 <div class="ibm-col-2-1">
 <p><label for="City">City:</label> <span><input name="City" id=
-"City" size="36" type="text" value="" /></span></p>
+"City" size="36" type="text" value="" /></span>
+    </p>
 </div>
 <div class="ibm-col-2-1">
 <p><label for="Language">Language:<span class=
 "ibm-required">*</span></label> <span><select name="Language" id=
-"Language" data-toggle="tooltip" title="Pass">
+"Language" data-toggle="tooltip" title="choose your language">
 <option value="" selected="selected">Select one</option>
 <option value="ab-GE">Abkhazian</option>
 <option value="aa-ET">Afar</option>
@@ -195,7 +206,8 @@ residence:<span class="ibm-required">*</span><br />
 <option value="ak-GH">Akan</option>
 <option value="sq-AL">Albanian</option>
 <option value="am-ET">Amharic</option>
-</select></span></p>
+</select></span>
+    <span id="feedback_language"></span></p>
 </div>
 </div>
 <p>Please select a security question that only you can answer or
@@ -206,7 +218,7 @@ your identity.</p>
 <div class="ibm-col-2-1">
 <p><label for="SecurityQues">Security question:<span class=
 "ibm-required">*</span></label> <span><select name="SecurityQues"
-id="SecurityQues" data-toggle="tooltip" title="Pass">
+id="SecurityQues" data-toggle="tooltip" title="choose your security question">
 <option selected="selected" value="">Select one</option>
 <option value="name">What is your mother's maiden name?</option>
 <option value="pet">What is the name of your first pet?</option>
@@ -215,19 +227,16 @@ school?</option>
 <option value="job">In what city or town was your first
 job?</option>
 <option value="country">In what country were you born?</option>
-</select></span></p>
-</div>
-<div class="ibm-col-2-1">
-<p id="customquestioncontainer" style="display:none;"><label for=
-"custom_question">Place a question in this text field.</label>
-<span><input name="custom_question" id="custom_question" size="42"
-type="text" value="" /></span></p>
+</select></span>
+    <span id="feedback_question"></span>
+    </p>
 </div>
 </div>
 <p><label for="SecurityAns">Answer to security
 question:<span class="ibm-required">*</span></label>
 <span><input name="SecurityAns" id="SecurityAns" size="42" type=
-"text" value="" data-toggle="tooltip" title="Pass"/></span></p>
+"text" value="" data-toggle="tooltip" title="fill your security answer"/></span>
+    <span id="feedback_answer"></span></p>
 
 </form>
         <button onclick="countInput()">Count Fields</button>
