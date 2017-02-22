@@ -27,7 +27,7 @@
               if(fname.val()==""){
                   $("#feedback_fname").html("please input your first name");
 			}
-               else if (fname.val().match(/^[a-zA-Z]{0,20}$/)==null){
+               else if (fname.val().match(/^[a-zA-Z]{1,20}$/)==null){
                    $("#feedback_fname").html( "Please do not enter space, numbers or punctuation in your name within 20 characters");
 			} else{
                 $("#feedback_fname").html( "validated");
@@ -39,7 +39,7 @@
                 if (lname.val()==""){
 fb_lname.html("please input your last name");
             }
-			else if (!lname.val().match(/^[a-zA-Z]{0,20}$/)){
+			else if (!lname.val().match(/^[a-zA-Z]{1,20}$/)){
 			fb_lname.html("Please do not enter space, numbers or punctuation in your name within 20 characters");
 			} else{
 			fb_lname.html( "validated");
@@ -52,32 +52,88 @@ fb_lname.html("please input your last name");
                 if (email.val()==""){
 fb_email.html("please input your email");
             }
-                else if (!email.val().match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+(.edu|.com|.net)$/)){
-			fb_email.html("Please do not enter space, numbers or punctuation in your name within 20 characters");
+                else if (!email.val().match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.(com|net|edu)$/)){
+			fb_email.html("Please do not enter space. You should contain @ in the middle and .edu .com or .net at the end");
 			} else{
 			fb_email.html( "validated");
 			}
             });
-			$("#Password").focus(function(){
-            $("#Password").tooltip();
+			$("#Password").focusout(function(){
+             password=$("#Password");
+                fb_pass = $("#feedback_password");
+                if (password.val()==""){
+fb_pass.html("please input your password");
+            }
+                else if (!password.val().match(/[a-zA-Z0-9]{8,}/)){
+			fb_pass.html("Please have at least 8 characters");
+			} else{
+			fb_pass.html( "validated");
+			}
             });
-			$("#RePassword").focus(function(){
-            $("#RePassword").tooltip();
+			$("#RePassword").focusout(function(){
+             repassword=$("#RePassword");
+			  password=$("#Password");
+                fb_repass = $("#feedback_repassword");
+                if (repassword.val()==""){
+fb_repass.html("please input your password again");
+            }
+                else if (!(repassword.val()===password.val())){
+			fb_repass.html("please type same password again");
+			} else{
+			fb_repass.html( "validated");
+			}
             });
-			$("#alias").focus(function(){
-            $("#alias").tooltip();
+			$("#alias").focusout(function(){
+            alias=$("#alias");
+                fb_alias = $("#feedback_alias");
+                if (alias.val()==""){
+fb_alias.html("please input your alias");
+            }
+                else if (!alias.val().match(/^[a-zA-Z0-9]{3,31}$/)){
+			fb_alias.html("please choose alias with at least 3 and at most 31 letters or numbers");
+			} else{
+			fb_alias.html( "validated");
+			}
             });
-			$("#countryResidence").focus(function(){
-            $("#countryResidence").tooltip();
+			$("#countryResidence").focusout(function(){
+            countryResidence=$("#countryResidence");
+                fb_country = $("#feedback_country");
+                if (countryResidence.val()==""){
+fb_country.html("please choose your country");
+            }
+             else{
+			fb_country.html( "validated");
+			}
             });
-			$("#Language").focus(function(){
-            $("#Language").tooltip();
+			$("#Language").focusout(function(){
+            language=$("#Language");
+                fb_language = $("#feedback_language");
+                if (language.val()==""){
+fb_language.html("please choose your language");
+            }
+              else{
+			fb_language.html( "validated");
+			}
             });
-			$("#SecurityQues").focus(function(){
-            $("#SecurityQues").tooltip();
+			$("#SecurityQues").focusout(function(){
+            securityQues=$("#SecurityQues");
+                fb_question = $("#feedback_question");
+                if (securityQues.val()==""){
+fb_question.html("please choose your security question");
+            }
+              else{
+			fb_question.html( "validated");
+			}
             });
-			$("#SecurityAns").focus(function(){
-            $("#SecurityAns").tooltip();
+			$("#SecurityAns").focusout(function(){
+            securityAns=$("#SecurityAns");
+                fb_answer = $("#feedback_answer");
+                if (securityAns.val()==""){
+fb_answer.html("please input your answer");
+            }
+                else{
+			fb_answer.html( "validated");
+			}
             });
         }
         function countInput(){
